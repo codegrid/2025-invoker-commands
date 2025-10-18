@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>デモ：ポップオーバーをInvoker Commandsで開閉する</title>
+  <style>
+    #menu-button {
+      anchor-name: --menu-button;
+    }
+    #menu {
+      margin: 0;
+      width: max-content;
+      position: absolute;
+      position-anchor: --menu-button;
+      position-area: block-end span-inline-end;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>デモ：ポップオーバーをInvoker Commandsで開閉する</h1>
+
+<button id="menu-button" command="toggle-popover" commandfor="menu">
+  メニュー
+</button>
+<div id="menu" popover>
+  <ul>
+    <li><a>メニュー1</a></li>
+    <li><a>メニュー2</a></li>
+    <li><a>メニュー3</a></li>
+    <li><a>メニュー4</a></li>
+    <li><a>メニュー5</a></li>
+  </ul>
+</div>
+
+</body>
+
+</html>

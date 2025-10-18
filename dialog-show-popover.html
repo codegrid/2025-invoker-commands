@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>デモ：dialog.show()の代用（ポップオーバー）</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <h1>デモ：dialog.show()の代用（ポップオーバー）</h1>
+
+  <button class="open-button" command="show-popover" commandfor="dialog">
+    ダイアログを開く
+  </button>
+  <dialog id="dialog" popover>
+    <p>ダイアログです。</p>
+    <button class="close-button" command="hide-popover" commandfor="dialog">
+      閉じる
+    </button>
+  </dialog>
+
+</body>
+
+</html>

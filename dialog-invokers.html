@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>デモ：dialog要素をHTMLだけで開閉する</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <h1>デモ：dialog要素をHTMLだけで開閉する</h1>
+
+  <div class="toolbar">
+    <button class="open-button" command="show-modal" commandfor="modal-dialog">
+      ダイアログを開く
+    </button>
+  </div>
+  <dialog id="modal-dialog">
+    <p>ダイアログです。</p>
+    <button class="close-button" command="close" commandfor="modal-dialog">
+      閉じる
+    </button>
+  </dialog>
+
+</body>
+
+</html>

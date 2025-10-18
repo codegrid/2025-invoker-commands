@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>デモ：dialog要素をJavaScriptで開閉する</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <h1>デモ：dialog要素をJavaScriptで開閉する</h1>
+
+  <div class="toolbar">
+    <button class="open-button">
+      ダイアログを開く
+    </button>
+  </div>
+  <dialog id="modal-dialog">
+    <p>ダイアログです。</p>
+    <button class="close-button">
+      閉じる
+    </button>
+  </dialog>
+
+  <script>
+    const dialog = document.querySelector('#modal-dialog');
+    const openButton = document.querySelector('.open-button');
+    const closeButton = document.querySelector('.close-button');
+    openButton.addEventListener('click', () => {
+      dialog.showModal();
+    });
+    closeButton.addEventListener('click', () => {
+      dialog.close();
+    });
+  </script>
+
+</body>
+
+</html>
