@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>デモ：dialog要素をJavaScriptで開閉する（各種イベントチェック）</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<h1>デモ：dialog要素をJavaScriptで開閉する（各種イベントチェック）</h1>
+
+<div class="toolbar">
+<button class="open-button">
+  ダイアログを開く
+</button>
+</div>
+<dialog id="modal-dialog">
+<p>ダイアログです。</p>
+<button class="request-close-button" value="hello-world">
+  閉じるリクエスト
+</button>
+<button class="close-button">
+  閉じる
+</button>
+</dialog>
+
+<h2>ログ</h2>
+<pre id="log"></pre>
+
+<footer>
+  <p><a href="./">トップに戻る</a></p>
+</footer>
+
+<script>
+const dialog = document.querySelector('#modal-dialog');
+const openButton = document.querySelector('.open-button');
+const requestCloseButton = document.querySelector('.request-close-button');
+const closeButton = document.querySelector('.close-button');
+
+openButton.addEventListener('click', () => {
+  dialog.showModal();
+});
+requestCloseButton.addEventListener('click', () => {
+  dialog.requestClose(requestCloseButton.value);
+});
+closeButton.addEventListener('click', () => {
+  dialog.close();
+});
+
+function logEvent(event) {
+  const logElement = document.getElementById('log');
+  const groupTitle = `${event.target.tagName} ${event.type} event`;
+  console.group(groupTitle);
+  console.dir(event);
+  console.groupEnd();
+
+  const logEntry = `
+
+${groupTitle}:
+{
+type: "${event.type}",
+target: ${event.target.tagName},
+currentTarget: ${event.currentTarget.tagName},
+cancelable: ${event.cancelable}
+}`;
+  logElement.textContent += logEntry + '\n';
+}
+
+dialog.addEventListener('close', (event) => {
+  logEvent(event);
+});
+dialog.addEventListener('cancel', (event) => {
+  logEvent(event);
+});
+dialog.addEventListener('command', (event) => {
+  logEvent(event);
+});
+
+const watcher = new CloseWatcher();
+watcher.addEventListener('close', (event) => {
+  logEvent(event);
+});
+watcher.addEventListener('cancel', (event) => {
+  logEvent(event);
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    logEvent(event);
+  }
+});
+</script>
+
+</body>
+
+</html>

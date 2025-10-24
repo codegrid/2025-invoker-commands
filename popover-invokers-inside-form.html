@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>デモ：フォーム内のポップオーバーをInvoker Commandsで開閉する</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.toolbar {
+  margin: 1em 0;
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+</style>
+</head>
+
+<body>
+<h1>デモ：フォーム内のポップオーバーをInvoker Commandsで開閉する</h1>
+
+<form>
+  <label for="text">テキスト</label>
+  <input id="text" name="text" value="">
+
+  <div class="toolbar">
+    <button command="show-popover" commandfor="popover">
+      show-popover<br>（typeなし）
+    </button>
+    <button command="show-popover" commandfor="popover" type="button">
+      show-popover<br>（type="button"）
+    </button>
+    <button command="show-popover" commandfor="popover" type="invalid">
+      show-popover<br>（type="invalid"）
+    </button>
+    <button command="show-popover" commandfor="popover" type="submit">
+      show-popover<br>（type="submit"）
+    </button>
+    <button command="show-popover" commandfor="popover" type="reset">
+      show-popover<br>（type="reset"）
+    </button>
+  </div>
+  <div id="popover" popover>
+    <p>ポップオーバーです。</p>
+  </div>
+
+  <button type="reset">リセット</button>
+  <button type="submit">送信</button>
+</form>
+
+<h2>ログ</h2>
+<pre id="log"></pre>
+
+<footer>
+  <p><a href="./">トップに戻る</a></p>
+</footer>
+
+<script>
+const form = document.querySelector('form');
+
+function logEvent(event) {
+  const logElement = document.getElementById('log');
+  const groupTitle = `${event.target.tagName} ${event.type} event`;
+  console.group(groupTitle);
+  console.dir(event);
+  console.groupEnd();
+
+  const logEntry = `
+
+${groupTitle}:
+{
+type: "${event.type}",
+target: ${event.target.tagName},
+currentTarget: ${event.currentTarget.tagName},
+cancelable: ${event.cancelable}
+}`;
+  logElement.textContent += logEntry + '\n';
+}
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  logEvent(event);
+});
+</script>
+
+<script src="invoker-support-message.js"></script>
+
+</body>
+
+</html>

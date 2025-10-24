@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>デモ：Invoker Commandsとpopovertargetの競合（ターゲット不一致）</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<h1>デモ：Invoker Commandsとpopovertargetの競合（ターゲット不一致）</h1>
+
+<!-- action/command はどちらも show（同等）だが、
+    commandfor は dialogA、popovertarget は dialogB を指す。 -->
+<button
+  class="open-button"
+  command="show-popover"
+  commandfor="dialogA"
+  popovertarget="dialogB"
+  popovertargetaction="show">
+  開く（commandfor=dialogA / popovertarget=dialogB）
+</button>
+
+<dialog id="dialogA" popover>
+  <p>ダイアログA（popover）です。</p>
+  <button class="close-button" command="hide-popover" commandfor="dialogA">
+    閉じるA
+  </button>
+</dialog>
+
+<dialog id="dialogB" popover>
+  <p>ダイアログB（popover）です。</p>
+  <button class="close-button" command="hide-popover" commandfor="dialogB">
+    閉じるB
+  </button>
+</dialog>
+
+<footer>
+  <p><a href="./">トップに戻る</a></p>
+</footer>
+
+<script src="invoker-support-message.js"></script>
+</body>
+</html>
