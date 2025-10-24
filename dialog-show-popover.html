@@ -2,26 +2,30 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>デモ：dialog.show()の代用（ポップオーバー）</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>デモ：dialog.show()の代用（ポップオーバー）</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h1>デモ：dialog.show()の代用（ポップオーバー）</h1>
+<h1>デモ：dialog.show()の代用（ポップオーバー）</h1>
 
-  <button class="open-button" command="show-popover" commandfor="dialog">
-    ダイアログを開く
+<button class="open-button" command="show-popover" commandfor="dialog">
+  ダイアログを開く
+</button>
+<dialog id="dialog" popover>
+  <p>ダイアログです。</p>
+  <button class="close-button" command="hide-popover" commandfor="dialog">
+    閉じる
   </button>
-  <dialog id="dialog" popover>
-    <p>ダイアログです。</p>
-    <button class="close-button" command="hide-popover" commandfor="dialog">
-      閉じる
-    </button>
-  </dialog>
+</dialog>
 
-  <script src="invoker-support-message.js"></script>
+<footer>
+  <p><a href="./">トップに戻る</a></p>
+</footer>
+
+<script src="invoker-support-message.js"></script>
 </body>
 
 </html>

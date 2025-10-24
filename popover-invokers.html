@@ -2,47 +2,51 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>デモ：ポップオーバーをInvoker Commandsで開閉する</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    #menu-button {
-      anchor-name: --menu-button;
-    }
-    #menu {
-      margin: 0;
-      width: max-content;
-      position: absolute;
-      position-anchor: --menu-button;
-      position-area: block-end span-inline-end;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>デモ：ポップオーバーをInvoker Commandsで開閉する</title>
+<link rel="stylesheet" href="style.css">
+<style>
+#menu-button {
+  anchor-name: --menu-button;
+}
+#menu {
+  margin: 0;
+  width: max-content;
+  position: absolute;
+  position-anchor: --menu-button;
+  position-area: block-end span-inline-end;
 
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-    }
-  </style>
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+</style>
 </head>
 
 <body>
-  <h1>デモ：ポップオーバーをInvoker Commandsで開閉する</h1>
+<h1>デモ：ポップオーバーをInvoker Commandsで開閉する</h1>
 
-  <button id="menu-button" command="toggle-popover" commandfor="menu">
-    メニュー
-  </button>
-  <div id="menu" popover>
-    <ul>
-      <li><a>メニュー1</a></li>
-      <li><a>メニュー2</a></li>
-      <li><a>メニュー3</a></li>
-      <li><a>メニュー4</a></li>
-      <li><a>メニュー5</a></li>
-    </ul>
-  </div>
+<button id="menu-button" command="toggle-popover" commandfor="menu">
+  メニュー
+</button>
+<div id="menu" popover>
+  <ul>
+    <li><a>メニュー1</a></li>
+    <li><a>メニュー2</a></li>
+    <li><a>メニュー3</a></li>
+    <li><a>メニュー4</a></li>
+    <li><a>メニュー5</a></li>
+  </ul>
+</div>
 
-  <script src="invoker-support-message.js"></script>
+<footer>
+  <p><a href="./">トップに戻る</a></p>
+</footer>
+
+<script src="invoker-support-message.js"></script>
 
 </body>
 
