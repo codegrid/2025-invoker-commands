@@ -32,49 +32,56 @@
   </button>
 </dialog>
 
+<h2>ログ</h2>
+<pre id="log"></pre>
+
 <footer>
   <p><a href="./">トップに戻る</a></p>
 </footer>
 
 <script>
-// dialogのcloseイベント、cancelイベント、commandイベントをconsole.dirに出力
-// request-closeのvalueも確認したい
+function logEvent(event) {
+  const logElement = document.getElementById('log');
+  const groupTitle = `${event.target.tagName} ${event.type} event`;
+  console.group(groupTitle);
+  console.dir(event);
+  console.groupEnd();
+
+  const logEntry = `
+
+${groupTitle}:
+{
+type: "${event.type}",
+target: ${event.target.tagName},
+currentTarget: ${event.currentTarget.tagName},
+cancelable: ${event.cancelable}
+}`;
+  logElement.textContent += logEntry + '\n';
+}
+
 const dialog = document.querySelector("#modal-dialog");
-dialog.addEventListener("close", (event) => {
-  console.group("dialog close event");
-  console.dir(event);
-  console.groupEnd();
+
+dialog.addEventListener('close', (event) => {
+  logEvent(event);
 });
-dialog.addEventListener("cancel", (event) => {
-  console.group("dialog cancel event");
-  console.dir(event);
-  console.groupEnd();
+dialog.addEventListener('cancel', (event) => {
+  logEvent(event);
 });
-dialog.addEventListener("command", (event) => {
-  console.group("dialog command event");
-  console.dir(event);
-  console.groupEnd();
+dialog.addEventListener('command', (event) => {
+  logEvent(event);
 });
 
-// closewatcherを設定、中身を確認
 const watcher = new CloseWatcher();
-watcher.addEventListener("close", (event) => {
-  console.group("closewatcher close event");
-  console.dir(event);
-  console.groupEnd();
+watcher.addEventListener('close', (event) => {
+  logEvent(event);
 });
-watcher.addEventListener("cancel", (event) => {
-  console.group("closewatcher cancel event");
-  console.dir(event);
-  console.groupEnd();
+watcher.addEventListener('cancel', (event) => {
+  logEvent(event);
 });
 
-// Escキーのkeydownイベントを確認
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    console.group("Escape keydown event");
-    console.dir(event);
-    console.groupEnd();
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    logEvent(event);
   }
 });
 </script>
