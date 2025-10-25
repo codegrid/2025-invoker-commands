@@ -69,10 +69,10 @@ function logEvent(event) {
 
 ${groupTitle}:
 {
-type: "${event.type}",
-target: ${event.target.tagName},
-currentTarget: ${event.currentTarget.tagName},
-cancelable: ${event.cancelable}
+  type: "${event.type}",
+  target: ${event.target.tagName},
+  currentTarget: ${event.currentTarget.tagName},
+  cancelable: ${event.cancelable}
 }`;
   logElement.textContent += logEntry + '\n';
 }
