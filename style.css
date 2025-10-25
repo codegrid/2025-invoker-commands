@@ -6,6 +6,10 @@ body {
     font-size: 1.2em;
   }
 
+  h2 {
+    font-size: 1em;
+  }
+
   button, input {
     font-size: inherit;
     padding: 0.5em 0.4em;
