@@ -71,13 +71,15 @@ dialog.addEventListener('command', (event) => {
   logEvent(event);
 });
 
-const watcher = new CloseWatcher();
-watcher.addEventListener('close', (event) => {
-  logEvent(event);
-});
-watcher.addEventListener('cancel', (event) => {
-  logEvent(event);
-});
+if ('CloseWatcher' in window) {
+  const watcher = new CloseWatcher();
+  watcher.addEventListener('close', (event) => {
+    logEvent(event);
+  });
+  watcher.addEventListener('cancel', (event) => {
+    logEvent(event);
+  });
+}
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
